@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>LooVé — Product Viewer</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="Trusol-style product page with model-viewer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link type="text/css" href="./styles.css" rel="stylesheet" />
+
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#6b6b6b;
+      --line:#e9e9e9;
+      --bg:#ffffff;
+      --btn:#111;
+      --btnText:#fff;
+      --btnGhost:#fff;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+    }
+
+    .topbar{
+      height:72px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 44px;
+    }
+
+    .brand{
+      letter-spacing:0.22em;
+      font-weight:600;
+      font-size:22px;
+    }
+
+    .nav{
+      display:flex;
+      gap:26px;
+      font-size:12px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+    }
+
+    .nav a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .crumb{
+      padding:18px 44px 0 44px;
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+
+    .wrap{ padding:18px 44px 48px 44px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.3fr 0.9fr;
+      gap:44px;
+      align-items:start;
+    }
+
+    .modelPane{
+      min-height:640px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    model-viewer{
+      width:100%;
+      height:640px;
+      background:#fff;
+    }
+
+    .infoPane{ padding-top:10px; }
+
+    .titleRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .productTitle{
+      font-size:34px;
+      font-weight:500;
+      margin:0;
+    }
+
+    .divider{
+      height:1px;
+      background:var(--line);
+      margin:14px 0 18px 0;
+    }
+
+    .meta{
+      font-size:14px;
+      margin-bottom:14px;
+    }
+
+    .desc{
+      font-size:14px;
+      line-height:1.75;
+      margin-bottom:18px;
+      max-width:520px;
+    }
+
+    .btn{
+      border:1px solid var(--ink);
+      background:#fff;
+      color:var(--ink);
+      padding:10px 14px;
+      font-size:12px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .btnPrimary{
+      background:var(--btn);
+      color:var(--btnText);
+    }
+
+    .section{ margin-top:18px; }
+
+    .sectionLabel{
+      font-size:12px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .btnRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">TRUSOL</div>
+  <nav class="nav">
+    <a href="#">Home</a>
+    <a href="#">Brand Story</a>
+    <a href="#">Trusol Products</a>
+    <a href="#">Trusol Project</a>
+    <a href="#">Articles</a>
+    <a href="#">Contact Us</a>
+    <a href="#">Download Catalogs</a>
+  </nav>
+</header>
+
+<div class="crumb">Home / Wash Basin / Solid Surface / Counter / LooVé</div>
+
+<main class="wrap">
+  <section class="grid">
+
+    <!-- LEFT: MODEL -->
+    <div class="modelPane">
+      <model-viewer
+        src="march 1!.glb"
+        ar
+        ar-modes="scene-viewer webxr quick-look"
+        camera-controls
+        tone-mapping="neutral"
+        poster="poster.png"
+        shadow-intensity="1"
+        animation-name="Explode"
+        environment-image="bloem_field_sunrise_4k.hdr"
+        camera-orbit="-60.3deg 82.47deg 5.246m"
+        field-of-view="30deg"
+        id="gear"
+        paused
+      >
+
+        <!-- HOTSPOTS (UNCHANGED) -->
+        <button class="Hotspot" slot="hotspot-1"
+          data-surface="5 0 3072 2927 3073 0.306 0.217 0.477"
+          data-visibility-attribute="visible"
+          onmouseover="addhotspot1()" onmouseout="removehotspot1()">
+          <div class="HotspotAnnotation" id="hotspot1" style="visibility:hidden;">Top</div>
+        </button>
+
+        <button class="Hotspot" slot="hotspot-2"
+          data-surface="4 0 533 534 609 0.179 0.286 0.535"
+          data-visibility-attribute="visible"
+          onmouseover="addhotspot2()" onmouseout="removehotspot2()">
+          <div class="HotspotAnnotation" id="hotspot2" style="visibility:hidden;">Main Body</div>
+        </button>
+
+        <button class="Hotspot" slot="hotspot-4"
+          data-surface="3 0 317922 317923 323379 0.460 0.077 0.463"
+          data-visibility-attribute="visible"
+          onmouseover="addhotspot3()" onmouseout="removehotspot3()">
+          <div class="HotspotAnnotation" id="hotspot3" style="visibility:hidden;">Material Tray</div>
+        </button>
+
+        <button class="Hotspot" slot="hotspot-5"
+          data-surface="1 0 1479 1233 1480 0.229 0.150 0.620"
+          data-visibility-attribute="visible"
+          onmouseover="addhotspot4()" onmouseout="removehotspot4()">
+          <div class="HotspotAnnotation" id="hotspot4" style="visibility:hidden;">Flush</div>
+        </button>
+
+        <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+        </div>
+
+        <button slot="ar-button" id="ar-button">View in your space</button>
+
+        <div id="ar-prompt">
+          <img src="ar_hand_prompt.png" alt="AR prompt" />
+        </div>
+
+      </model-viewer>
+    </div>
+
+    <!-- RIGHT: PRODUCT INFO -->
+    <aside class="infoPane">
+      <div class="titleRow">
+        <h1 class="productTitle">LooVé</h1>
+        <button class="btn">⌕</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="meta"><strong>Size :</strong> 1410×1200×1000 mm.</p>
+
+      <p class="desc">
+        Our project, Loo+Love, reimagines the future bathroom as a shared, pet-friendly environment. This concept transforms the restroom into a comfortable and intuitive space for dogs by integrating an organic, grass-lined pad that mimics natural outdoor terrain. The use of natural materials and soft, flowing forms enhances comfort while promoting a sense of connection between pets and owners. The system can also be adapted into a portable version for outdoor events, providing a hygienic and convenient toilet solution for pet owners on the go. This project explores how thoughtful design can bring wellbeing, inclusivity, and practicality into future restroom experiences.
+      </p>
+
+      <button class="btn btnPrimary">More Option</button>
+
+      <div class="section">
+        <div class="sectionLabel">View</div>
+        <div class="btnRow">
+          <button class="btn" onclick="setOrbit('-67.23deg 87.11deg 5.246m')">Front</button>
+          <button class="btn" onclick="setOrbit('25.51deg 90.46deg 5.246m')">Right</button>
+          <button class="btn" onclick="setOrbit('-140.2deg 88.14deg 5.246m')">Left</button>
+          <button class="btn" onclick="setOrbit('90.34deg 9.125deg 5.246m')">Top</button>
+          <button class="btn" onclick="setOrbit('-253.8deg 86.85deg 5.246m')">Back</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sectionLabel">Variant</div>
+        <div class="btnRow">
+          <button class="btn" onclick="VBtn01()">Gravel</button>
+          <button class="btn" onclick="VBtn02()">Grass</button>
+          <button class="btn" onclick="VBtn03()">Sand</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sectionLabel">Animation</div>
+        <div class="btnRow">
+          <button class="btn" onclick="Btn01()">Explode</button>
+          <button class="btn" onclick="Btn02()">Flush</button>
+          <button class="btn" onclick="Btn03()">Switch Material</button>
+          <button class="btn" onclick="pauseAnimation()">Pause</button>
+        </div>
+      </div>
+
+    </aside>
+
+  </section>
+</main>
+
+<script>
+const gear = document.getElementById("gear");
+
+function playAnim(name){
+  gear.paused = true;
+  gear.animationName = name;
+  gear.currentTime = 0;
+  gear.paused = false;
+  gear.play();
+}
+
+function Btn01(){ playAnim("Explode"); }
+function Btn02(){ playAnim("Flush"); }
+function Btn03(){ playAnim("Switch Material"); }
+
+function pauseAnimation(){ gear.pause(); }
+
+function VBtn01(){ gear.variantName = "V1"; }
+function VBtn02(){ gear.variantName = "V2"; }
+function VBtn03(){ gear.variantName = "V3"; }
+
+function setOrbit(orbit){ gear.cameraOrbit = orbit; }
+
+function addhotspot1(){ document.getElementById("hotspot1").style.visibility="visible"; }
+function removehotspot1(){ document.getElementById("hotspot1").style.visibility="hidden"; }
+function addhotspot2(){ document.getElementById("hotspot2").style.visibility="visible"; }
+function removehotspot2(){ document.getElementById("hotspot2").style.visibility="hidden"; }
+function addhotspot3(){ document.getElementById("hotspot3").style.visibility="visible"; }
+function removehotspot3(){ document.getElementById("hotspot3").style.visibility="hidden"; }
+function addhotspot4(){ document.getElementById("hotspot4").style.visibility="visible"; }
+function removehotspot4(){ document.getElementById("hotspot4").style.visibility="hidden"; }
+</script>
+
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+</body>
+</html>
